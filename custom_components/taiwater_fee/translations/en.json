@@ -1,0 +1,48 @@
+{
+    "config": {
+        "abort": {
+            "already_configured": "TaiWater Fee is already configured"
+        },
+        "error": {
+            "connection_error": "Can't connect to TaiWater Fee."
+        },
+        "flow_title": "TaiWater Fee: {name}",
+        "step": {
+            "user": {
+                "data": {
+                    "waterid": "Water ID (Without dash)",
+                    "cookie": "Cookie",
+                    "csrf": "CSRF Token",
+                    "verifytoken1": "Request Verification Token in Header",
+                    "verifytoken2": "Request Verification Token in Data"
+                },
+                "description": "Please enter connection settings of your TaiWater Fee."
+            }
+        }
+    },
+    "options": {
+        "step": {
+            "init": {
+                "title": "TaiWater Fee (Without dash)",
+                "data": {
+                    "waterid": "Water ID",
+                    "cookie": "Cookie",
+                    "csrf": "CSRF Token",
+                    "verifytoken1": "Request Verification Token in Header",
+                    "verifytoken2": "Request Verification Token in Data"					
+                }
+            }
+        }
+    },
+    "state": {
+        "_": {
+            "billing_month": "Billing month",
+            "billing_date": "Billing date",
+            "payment": "Payment",
+            "power_consumption": "Power consumption",
+            "collection_date": "Collection date",
+            "billing_amount": "Billing amount",
+            "https_result": "Https result"
+        }
+    }
+}

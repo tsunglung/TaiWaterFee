@@ -1,0 +1,48 @@
+{
+    "config": {
+        "abort": {
+            "already_configured": "\u53f0\u7063\u81ea\u4f86\u6c34\u8cbb\u5df2\u7d93\u8a2d\u5b9a"
+        },
+        "error": {
+            "connection_error": "\u7121\u6cd5\u9023\u63a5 \u53f0\u7063\u81ea\u4f86\u6c34\u8cbb."
+        },
+        "flow_title": "\u53f0\u7063\u81ea\u4f86\u6c34\u8cbb: {name}",
+        "step": {
+            "user": {
+                "data": {
+                    "waterid": "\u6c34\u865f (\u4e0d\u7528\u9023\u63a5\u865f)",
+                    "cookie": "Cookie",
+                    "csrf": "\u6aa2\u8996\u4ee4\u724c",
+                    "verifytoken1": "\u9a57\u8b49\u4ee4\u724c (Header)",
+                    "verifytoken2": "\u9a57\u8b49\u4ee4\u724c (Data)"
+                },
+                "description": "\u8acb\u8f38\u5165\u4f60\u7684 \u53f0\u7063\u81ea\u4f86\u6c34\u8cbb \u9023\u7dda\u8cc7\u8a0a."
+            }
+        }
+    },
+    "options": {
+        "step": {
+            "init": {
+                "title": "\u53f0\u7063\u81ea\u4f86\u6c34\u8cbb",
+                "data": {
+                    "waterid": "\u6c34\u865f (\u4e0d\u7528\u9023\u63a5\u865f)",
+                    "cookie": "Cookie",
+                    "csrf": "\u6aa2\u8996\u4ee4\u724c",
+                    "verifytoken1": "\u9a57\u8b49\u4ee4\u724c (Header)",
+                    "verifytoken2": "\u9a57\u8b49\u4ee4\u724c (Data)"
+                }
+            }
+        }
+    },
+    "state": {
+        "_": {
+            "billing_month": "\u7e73\u8cbb\u5e74\u6708",
+            "billing_date": "\u92b7\u5e33\u65e5\u671f",
+            "payment": "\u92b7\u5e33\u65e5\u671f",
+            "water_consumption": "\u7528\u6c34\u5ea6\u6578(\u4e0d\u542b\u5206\u6524\u5ea6\u6578)",
+            "duration": "\u8a08\u8cbb\u6642\u9593",
+            "billing_amount": "\u61c9\u7e73\u7e3d\u91d1\u984d",
+            "https_result": "\u7db2\u7ad9\u56de\u61c9"
+        }
+    }
+}
