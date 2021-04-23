@@ -2,8 +2,8 @@
     "domain": "taiwater_fee",
     "name": "Taiwan Water Fee",
     "version": "0.1.0",
-    "documentation": "https://github.com/tsunglung/taiwater_fee",
-    "issue_tracker": "https://github.com/tsunglung/taiwater_fee/issues",
+    "documentation": "https://github.com/tsunglung/taiwaterfee",
+    "issue_tracker": "https://github.com/tsunglung/taiwaterfee/issues",
     "config_flow": true,
     "dependencies": [],
     "codeowners": [

@@ -12,8 +12,8 @@
                 "data": {
                     "waterid": "\u6c34\u865f (\u4e0d\u7528\u9023\u63a5\u865f)",
                     "cookie": "Cookie",
-                    "csrf": "\u6aa2\u8996\u4ee4\u724c",
                     "verifytoken1": "\u9a57\u8b49\u4ee4\u724c (Header)",
+                    "csrf": "\u6aa2\u8996\u4ee4\u724c",
                     "verifytoken2": "\u9a57\u8b49\u4ee4\u724c (Data)"
                 },
                 "description": "\u8acb\u8f38\u5165\u4f60\u7684 \u53f0\u7063\u81ea\u4f86\u6c34\u8cbb \u9023\u7dda\u8cc7\u8a0a."
@@ -27,8 +27,8 @@
                 "data": {
                     "waterid": "\u6c34\u865f (\u4e0d\u7528\u9023\u63a5\u865f)",
                     "cookie": "Cookie",
-                    "csrf": "\u6aa2\u8996\u4ee4\u724c",
                     "verifytoken1": "\u9a57\u8b49\u4ee4\u724c (Header)",
+                    "csrf": "\u6aa2\u8996\u4ee4\u724c",
                     "verifytoken2": "\u9a57\u8b49\u4ee4\u724c (Data)"
                 }
             }
