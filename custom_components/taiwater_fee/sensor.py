@@ -2,7 +2,7 @@
 import logging
 from typing import Callable
 from datetime import timedelta
-
+from http import HTTPStatus
 from aiohttp.hdrs import USER_AGENT
 import requests
 from bs4 import BeautifulSoup
@@ -16,9 +16,6 @@ from homeassistant.helpers.event import track_point_in_time
 from homeassistant.const import (
     ATTR_ATTRIBUTION,
     CURRENCY_DOLLAR,
-    HTTP_OK,
-    HTTP_FORBIDDEN,
-    HTTP_NOT_FOUND,
 )
 from .const import (
     ATTRIBUTION,
@@ -136,20 +133,20 @@ class TaiWaterFeeData():
                 _LOGGER.error("Failed fetching data for %s", self._waterid)
                 return
 
-            if req.status_code == HTTP_OK:
+            if req.status_code == HTTPStatus.OK:
                 self.data[self._waterid] = self._parser_html(req.text)
                 if len(self.data[self._waterid]) >= 1:
-                    self.data[self._waterid]['result'] = HTTP_OK
+                    self.data[self._waterid]['result'] = HTTPStatus.OK
                 else:
-                    self.data[self._waterid]['result'] = HTTP_NOT_FOUND
+                    self.data[self._waterid]['result'] = HTTPStatus.NOT_FOUND
                 self.expired = False
-            elif req.status_code == HTTP_NOT_FOUND:
-                self.data[self._waterid]['result'] = HTTP_NOT_FOUND
+            elif req.status_code == HTTPStatus.FOUND:
+                self.data[self._waterid]['result'] = HTTPStatus.NOT_FOUND
                 self.expired = True
             else:
                 info = ""
                 self.data[self._waterid]['result'] = req.status_code
-                if req.status_code == HTTP_FORBIDDEN:
+                if req.status_code == HTTPStatus.FORBIDDEN:
                     info = " Token or Cookie is expired"
                 _LOGGER.error(
                     "Failed fetching data for %s (HTTP Status_code = %d).%s",
@@ -262,5 +259,5 @@ class TaiWaterFeeSensor(SensorEntity):
                     self._attr_value[ATTR_DURATION] = j
             self._attr_value[ATTR_HTTPS_RESULT] = self._data.data[self._waterid].get(
                 'result', 'Unknow')
-            if self._attr_value[ATTR_HTTPS_RESULT] == HTTP_FORBIDDEN:
+            if self._attr_value[ATTR_HTTPS_RESULT] == HTTPStatus.FORBIDDEN:
                 self._state = None

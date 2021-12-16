@@ -1,10 +1,8 @@
 """ TaiWater Fee """
-import logging
+
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant, Event
 from .const import DATA_KEY, DOMAIN, DOMAINS
-
-_LOGGER = logging.getLogger(__name__)
 
 
 async def async_setup(hass: HomeAssistant, hass_config: dict):
@@ -17,14 +15,6 @@ async def async_update_options(hass: HomeAssistant, entry: ConfigEntry):
     """ Update Optioins if available """
     await hass.config_entries.async_reload(entry.entry_id)
 
-
-async def async_remove_entry(hass, entry):
-    """Handle removal of an entry."""
-    try:
-        for domain in DOMAINS:
-            await hass.config_entries.async_forward_entry_unload(entry, domain)
-    except ValueError:
-        pass
 
 async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry):
     """ Unload Entry """
