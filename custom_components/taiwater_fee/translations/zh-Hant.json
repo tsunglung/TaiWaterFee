@@ -12,9 +12,9 @@
                 "data": {
                     "waterid": "\u6c34\u865f (\u4e0d\u7528\u9023\u63a5\u865f)",
                     "cookie": "Cookie",
-                    "verifytoken1": "\u9a57\u8b49\u4ee4\u724c (Header)",
-                    "csrf": "\u6aa2\u8996\u4ee4\u724c",
-                    "verifytoken2": "\u9a57\u8b49\u4ee4\u724c (Data)"
+                    "model_index": "\u6aa2\u8996\u4ee4\u724c",
+                    "verifytoken": "\u9a57\u8b49\u4ee4\u724c (Data)",
+                    "verificationcode": "\u9a57\u8b49\u78bc"
                 },
                 "description": "\u8acb\u8f38\u5165\u4f60\u7684 \u53f0\u7063\u81ea\u4f86\u6c34\u8cbb \u9023\u7dda\u8cc7\u8a0a."
             }
@@ -27,9 +27,9 @@
                 "data": {
                     "waterid": "\u6c34\u865f (\u4e0d\u7528\u9023\u63a5\u865f)",
                     "cookie": "Cookie",
-                    "verifytoken1": "\u9a57\u8b49\u4ee4\u724c (Header)",
-                    "csrf": "\u6aa2\u8996\u4ee4\u724c",
-                    "verifytoken2": "\u9a57\u8b49\u4ee4\u724c (Data)"
+                    "model_index": "\u6aa2\u8996\u4ee4\u724c",
+                    "verifytoken": "\u9a57\u8b49\u4ee4\u724c (Data)",
+                    "verificationcode": "\u9a57\u8b49\u78bc"
                 }
             }
         }

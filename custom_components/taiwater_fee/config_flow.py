@@ -17,9 +17,9 @@ from .const import (
     DEFAULT_NAME,
     CONF_WATERID,
     CONF_COOKIE,
-    CONF_CSRF,
-    CONF_VERIFYTOKEN1,
-    CONF_VERIFYTOKEN2
+    CONF_MODEL_INDEX,
+    CONF_VERIFYTOKEN,
+    CONF_VERIFICATIONCODE
 )
 
 
@@ -33,9 +33,9 @@ class LineBotFlowHandler(ConfigFlow, domain=DOMAIN):
         """Initialize flow."""
         self._water_id: Optional[str] = None
         self._cookie: Optional[str] = None
-        self._verifytoken1: Optional[str] = None
-        self._viewstate: Optional[str] = None
-        self._verifytoken2: Optional[str] = None
+        self._model_inex: Optional[str] = None
+        self._verifytoken: Optional[str] = None
+        self._verificationcode: Optional[str] = None
 
     @staticmethod
     @callback
@@ -61,12 +61,12 @@ class LineBotFlowHandler(ConfigFlow, domain=DOMAIN):
                             default=self._water_id or vol.UNDEFINED)] = str
         fields[vol.Required(CONF_COOKIE,
                             default=self._cookie or vol.UNDEFINED)] = str
-        fields[vol.Required(CONF_VERIFYTOKEN1,
-                            default=self._verifytoken1 or vol.UNDEFINED)] = str
-        fields[vol.Required(CONF_CSRF,
-                            default=self._viewstate or vol.UNDEFINED)] = str
-        fields[vol.Required(CONF_VERIFYTOKEN2,
-                            default=self._verifytoken2 or vol.UNDEFINED)] = str
+        fields[vol.Required(CONF_MODEL_INDEX,
+                            default=self._model_inex or vol.UNDEFINED)] = str
+        fields[vol.Required(CONF_VERIFYTOKEN,
+                            default=self._verifytoken or vol.UNDEFINED)] = str
+        fields[vol.Required(CONF_VERIFICATIONCODE,
+                            default=self._verificationcode or vol.UNDEFINED)] = str
         self._name = self._water_id
         return self.async_show_form(
             step_id="user",
@@ -92,9 +92,9 @@ class LineBotFlowHandler(ConfigFlow, domain=DOMAIN):
             return
         self._water_id = user_input.get(CONF_WATERID, "")
         self._cookie = user_input.get(CONF_COOKIE, "")
-        self._verifytoken1 = user_input.get(CONF_VERIFYTOKEN1, "")
-        self._viewstate = user_input.get(CONF_CSRF, "")
-        self._verifytoken2 = user_input.get(CONF_VERIFYTOKEN2, "")
+        self._model_inex = user_input.get(CONF_MODEL_INDEX, "")
+        self._verifytoken = user_input.get(CONF_VERIFYTOKEN, "")
+        self._verificationcode = user_input.get(CONF_VERIFICATIONCODE, "")
 
     @callback
     def _async_get_entry(self):
@@ -103,9 +103,9 @@ class LineBotFlowHandler(ConfigFlow, domain=DOMAIN):
             data={
                 CONF_WATERID: self._water_id,
                 CONF_COOKIE: self._cookie,
-                CONF_VERIFYTOKEN1: self._verifytoken1,
-                CONF_CSRF: self._viewstate,
-                CONF_VERIFYTOKEN2: self._verifytoken2,
+                CONF_MODEL_INDEX: self._model_inex,
+                CONF_VERIFYTOKEN: self._verifytoken,
+                CONF_VERIFICATIONCODE: self._verificationcode
             },
         )
 
@@ -115,9 +115,9 @@ class OptionsFlowHandler(OptionsFlow):
     """Handle options flow changes."""
     _water_id = None
     _cookie = None
-    _verifytoken1 = None
-    _viewstate = None
-    _verifytoken2 = None
+    _model_inex = None
+    _verifytoken = None
+    _verificationcode = None
 
     def __init__(self, config_entry):
         """Initialize options flow."""
@@ -128,24 +128,24 @@ class OptionsFlowHandler(OptionsFlow):
         if user_input is not None:
             self._water_id = user_input.get(CONF_WATERID)
             self._cookie = user_input.get(CONF_COOKIE)
-            self._verifytoken1 = user_input.get(CONF_VERIFYTOKEN1)
-            self._viewstate = user_input.get(CONF_CSRF)
-            self._verifytoken2 = user_input.get(CONF_VERIFYTOKEN2)
+            self._model_inex = user_input.get(CONF_MODEL_INDEX)
+            self._verifytoken = user_input.get(CONF_VERIFYTOKEN)
+            self._verificationcode = user_input.get(CONF_VERIFICATIONCODE)
             return self.async_create_entry(
                 title='',
                 data={
                     CONF_WATERID: self._water_id,
                     CONF_COOKIE: self._cookie,
-                    CONF_VERIFYTOKEN1: self._verifytoken1,
-                    CONF_CSRF: self._viewstate,
-                    CONF_VERIFYTOKEN2: self._verifytoken2,
+                    CONF_MODEL_INDEX: self._model_inex,
+                    CONF_VERIFYTOKEN: self._verifytoken,
+                    CONF_VERIFICATIONCODE: self._verificationcode
                 },
             )
         self._water_id = self.config_entry.options.get(CONF_WATERID, '')
         self._cookie = self.config_entry.options.get(CONF_COOKIE, '')
-        self._verifytoken1 = self.config_entry.options.get(CONF_VERIFYTOKEN1, '')
-        self._viewstate = self.config_entry.options.get(CONF_CSRF, '')
-        self._verifytoken2 = self.config_entry.options.get(CONF_VERIFYTOKEN2, '')
+        self._model_inex = self.config_entry.options.get(CONF_MODEL_INDEX, '')
+        self._verifytoken = self.config_entry.options.get(CONF_VERIFYTOKEN, '')
+        self._verificationcode = self.config_entry.options.get(CONF_VERIFICATIONCODE, '')
 
         return self.async_show_form(
             step_id="init",
@@ -153,9 +153,9 @@ class OptionsFlowHandler(OptionsFlow):
                 {
                     vol.Required(CONF_WATERID, default=self._water_id): str,
                     vol.Required(CONF_COOKIE, default=self._cookie): str,
-                    vol.Required(CONF_VERIFYTOKEN1, default=self._verifytoken1): str,
-                    vol.Required(CONF_CSRF, default=self._viewstate): str,
-                    vol.Required(CONF_VERIFYTOKEN2, default=self._verifytoken2): str,
+                    vol.Required(CONF_MODEL_INDEX, default=self._model_inex): str,
+                    vol.Required(CONF_VERIFYTOKEN, default=self._verifytoken): str,
+                    vol.Required(CONF_VERIFICATIONCODE, default=self._verificationcode): str,
                 }
             ),
         )

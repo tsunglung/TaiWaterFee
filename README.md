@@ -25,11 +25,11 @@ You need to grab a cookie and three tokens.
 3. Open the [TaiWater Fee Web site](https://www.water.gov.tw/ch/EQuery/WaterFeeQuery?nodeId=753), Enter the Water ID and input Verification code.
 4. Search for "fee" (for me only three itemes shows up, choose the first one)
 5. Go to "headers" -> "request headers"
-6. copy the 170 characters like "xwu51weubdalqqkmnlizypxc" starting after "TS01689f3b=" in the field Cookie (mark with a mouse and copy to clipboard)
-7. copy the 108 characters like "XXXXXXXXXXXXX...." start after "\__RequestVerificationToken:"  in the field "Cookie" (mark with a mouse and copy to clipboard)
-8. Go to "headers" -> "from data"
-9. copy the 36 characters like "5e8e1218-59e1-42f0-bd5d-bde8be4ae30e" in the field "model.Index"  (mark with a mouse and copy to clipboard)
-10. copy the 108 characters like "XXXXXXXXXXXXX....." in the field "\__RequestVerificationToken"  (mark with a mouse and copy to clipboard)
+6. copy the all characters in the field Cookie (mark with the mouse and copy to clipboard)
+7. Go to "headers" -> "from data"
+8. copy the 36 characters like "5e8e1218-59e1-42f0-bd5d-bde8be4ae30e" in the field "model.Index"  (mark with the mouse and copy to clipboard)
+9. copy the 108 characters like "XXXXXXXXXXXXX....." in the field "\__RequestVerificationToken"  (mark with the mouse and copy to clipboard)
+10. Copy the 5 characters in the field "VerificationCode" (mark with the mouse and copy to clipboard)
 
 # Config
 

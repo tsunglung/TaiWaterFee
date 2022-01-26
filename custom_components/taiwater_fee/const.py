@@ -24,9 +24,9 @@ ATTR_LIST = [
 
 CONF_WATERID = "waterid"
 CONF_COOKIE = "cookie"
-CONF_CSRF = "csrf"
-CONF_VERIFYTOKEN1 = "verifytoken1"
-CONF_VERIFYTOKEN2 = "verifytoken2"
+CONF_MODEL_INDEX = "model_index"
+CONF_VERIFYTOKEN = "verifytoken"
+CONF_VERIFICATIONCODE = "verificationcode"
 ATTRIBUTION = "Powered by TaiWater Fee Data"
 
 HA_USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.72 Safari/537.36 OPR/38.0.2220.41"

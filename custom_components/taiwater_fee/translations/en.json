@@ -12,9 +12,9 @@
                 "data": {
                     "waterid": "Water ID (Without dash)",
                     "cookie": "Cookie",
-                    "csrf": "CSRF Token",
-                    "verifytoken1": "Request Verification Token in Header",
-                    "verifytoken2": "Request Verification Token in Data"
+                    "model_index": "Model Index",
+                    "verifytoken": "Request Verification Token in Data",
+                    "verificationcode": "Verification Code"
                 },
                 "description": "Please enter connection settings of your TaiWater Fee."
             }
@@ -23,13 +23,13 @@
     "options": {
         "step": {
             "init": {
-                "title": "TaiWater Fee (Without dash)",
+                "title": "TaiWater Fee",
                 "data": {
-                    "waterid": "Water ID",
+                    "waterid": "Water ID (without dash)",
                     "cookie": "Cookie",
-                    "csrf": "CSRF Token",
-                    "verifytoken1": "Request Verification Token in Header",
-                    "verifytoken2": "Request Verification Token in Data"					
+                    "model_index": "Model Index",
+                    "verifytoken": "Request Verification Token in Data",
+                    "verificationcode": "Verification Code"
                 }
             }
         }

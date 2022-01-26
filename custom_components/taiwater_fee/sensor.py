@@ -30,9 +30,9 @@ from .const import (
     BASE_URL,
     CONF_WATERID,
     CONF_COOKIE,
-    CONF_CSRF,
-    CONF_VERIFYTOKEN1,
-    CONF_VERIFYTOKEN2,
+    CONF_MODEL_INDEX,
+    CONF_VERIFYTOKEN,
+    CONF_VERIFICATIONCODE,
     DATA_KEY,
     HA_USER_AGENT,
     REQUEST_TIMEOUT
@@ -54,17 +54,17 @@ async def async_setup_entry(
     if config.data.get(CONF_WATERID, None):
         waterid = config.data[CONF_WATERID]
         cookie = config.data[CONF_COOKIE]
-        csrf = config.data[CONF_CSRF]
-        verifytoken1 = config.data[CONF_VERIFYTOKEN1]
-        verifytoken2 = config.data[CONF_VERIFYTOKEN2]
+        model_inex = config.data[CONF_MODEL_INDEX]
+        verifytoken = config.data[CONF_VERIFYTOKEN]
+        verificationcode = config.data[CONF_VERIFICATIONCODE]
     else:
         waterid = config.options[CONF_WATERID]
         cookie = config.options[CONF_COOKIE]
-        csrf = config.options[CONF_CSRF]
-        verifytoken1 = config.options[CONF_VERIFYTOKEN1]
-        verifytoken2 = config.options[CONF_VERIFYTOKEN2]
+        model_inex = config.options[CONF_MODEL_INDEX]
+        verifytoken = config.options[CONF_VERIFYTOKEN]
+        verificationcode = config.options[CONF_VERIFICATIONCODE]
 
-    data = TaiWaterFeeData(waterid, cookie, csrf, verifytoken1, verifytoken2)
+    data = TaiWaterFeeData(waterid, cookie, model_inex, verifytoken, verificationcode)
     data.expired = False
     device = TaiWaterFeeSensor(data, waterid)
 
@@ -75,14 +75,14 @@ async def async_setup_entry(
 class TaiWaterFeeData():
     """Class for handling the data retrieval."""
 
-    def __init__(self, waterid, cookie, csrf, verifytoken1, verifytoken2):
+    def __init__(self, waterid, cookie, model_inex, verifytoken, verificationcode):
         """Initialize the data object."""
         self.data = {}
         self._waterid = waterid
         self._cookie = cookie
-        self._csrf = csrf
-        self._verifytoken1 = verifytoken1
-        self._verifytoken2 = verifytoken2
+        self._model_inex = model_inex
+        self._verifytoken = verifytoken
+        self._verificationcode = verificationcode
         self.expired = False
         self.uri = BASE_URL
 
@@ -107,16 +107,16 @@ class TaiWaterFeeData():
     @Throttle(MIN_TIME_BETWEEN_UPDATES, MIN_TIME_BETWEEN_FORCED_UPDATES)
     def update(self, **kwargs):
         """Get the latest data for water id from REST service."""
-        self._cookie = "__RequestVerificationToken={}; TS01689f3b={}".format(
-            self._verifytoken1,
+        self._cookie = "{}".format(
             self._cookie)
         headers = {USER_AGENT: HA_USER_AGENT, "Cookie": self._cookie}
         payload = {
-            "__RequestVerificationToken": self._verifytoken2,
-            "model.Index": self._csrf,
-            "model[{}].SiteNo".format(self._csrf): self._waterid[:2],
-            "model[{}].UserNo".format(self._csrf): self._waterid[2:-1],
-            "model[{}].CheckNo".format(self._csrf): self._waterid[-1]}
+            "__RequestVerificationToken": self._verifytoken,
+            "model.Index": self._model_inex,
+            "model[{}].SiteNo".format(self._model_inex): self._waterid[:2],
+            "model[{}].UserNo".format(self._model_inex): self._waterid[2:-1],
+            "model[{}].CheckNo".format(self._model_inex): self._waterid[-1],
+            "VerificationCode": self._verificationcode}
 
         self.data = {}
         self.data[self._waterid] = {}
